@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    Mage
+ * @package     Mage_Cms
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Tsg_Article>
+            <version>0.0.2</version>
+        </Tsg_Article>
+    </modules>
+    <global>
+        <blocks>
+            <tsg_article>
+                <class>Tsg_Article_Block</class>
+            </tsg_article>
+            <page>
+                <rewrite>
+                    <html_head>Tsg_Article_Block_Page_Head</html_head>
+                </rewrite>
+            </page>
+        </blocks>
+        <models>
+            <tsg_article>
+                <class>Tsg_Article_Model</class>
+                <resourceModel>tsg_article_resource</resourceModel>
+            </tsg_article>
+            <!--<catalog>
+                <rewrite>
+                    <product>Tsg_Article_Model_Catalog_Product</product>
+                </rewrite>
+            </catalog>-->
+            <tsg_article_resource>
+                <class>Tsg_Article_Model_Resource</class>
+                <entities>
+                    <article>
+                        <table>tsg_article</table>
+                    </article>
+                </entities>
+            </tsg_article_resource>
+        </models>
+        <helpers>
+            <tsg_article>
+                <class>Tsg_Article_Helper</class>
+            </tsg_article>
+            <catalog>
+                <rewrite>
+                    <category>Tsg_Article_Helper_Catalog_Category</category>
+                </rewrite>
+            </catalog>
+        </helpers>
+        <resources>
+            <tsg_article_setup>
+                <setup>
+                    <module>Tsg_Article</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </tsg_article_setup>
+        </resources>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <tsg_article>
+                    <file>tsg_article.xml</file>
+                </tsg_article>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <tsg_article>
+                <use>standard</use>
+                <args>
+                    <module>Tsg_Article</module>
+                    <frontName>tsg_article</frontName>
+                </args>
+            </tsg_article>
+        </routers>
+        <layout>
+            <updates>
+                <tsg_article>
+                    <file>tsg_article.xml</file>
+                </tsg_article>
+            </updates>
+        </layout>
+        <events>
+            <page_block_html_topmenu_gethtml_before>
+                <observers>
+                    <tsg_article_page_block_html_topmenu_gethtml_before>
+                        <class>tsg_article/observer</class>
+                        <method>addItemToMenu</method>
+                    </tsg_article_page_block_html_topmenu_gethtml_before>
+                </observers>
+            </page_block_html_topmenu_gethtml_before>
+            <sales_quote_add_item>
+                <observers>
+                    <tsg_article_sales_quote_add_item>
+                        <class>tsg_article/observer</class>
+                        <method>salesQuoteAddItem</method>
+                    </tsg_article_sales_quote_add_item>
+                </observers>
+            </sales_quote_add_item>
+        </events>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <tsg_article before="Mage_Adminhtml">Tsg_Article_Adminhtml</tsg_article>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

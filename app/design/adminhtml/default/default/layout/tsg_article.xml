@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_article_index>
+        <reference name="content">
+            <block type="tsg_article/adminhtml_article" name="article.grid"/>
+        </reference>
+    </adminhtml_article_index>
+
+    <adminhtml_article_edit>
+        <reference name="content">
+            <block type="tsg_article/adminhtml_article_edit" name="article_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="tsg_article/adminhtml_article_edit_tabs" name="article_edit_tabs">
+                <block type="tsg_article/adminhtml_article_edit_tab_main" name="tsg_article_edit_tab_main" />
+                <action method="addTab"><name>main_section</name><block>tsg_article_edit_tab_main</block></action>
+            </block>
+        </reference>
+    </adminhtml_article_edit>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <block type="tsg_article/adminhtml_article_edit_tab_main" name="tsg_article_edit_tab_main" />
+            <action method="addTab"><name>main_section</name><block>tsg_article_edit_tab_main</block></action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

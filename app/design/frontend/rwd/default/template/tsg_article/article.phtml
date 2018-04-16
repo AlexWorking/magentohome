@@ -1,0 +1,11 @@
+<?php /* @var $this Tsg_Article_Block_Article */ ?>
+
+
+<?php $article = $this->getArticle() ?>
+
+<h1>
+    <?php echo $this->escapeHtml($article->getTitle()); ?>
+</h1>
+<div>
+    <?php echo $this->escapeHtml($article->getContent()); ?>
+</div>

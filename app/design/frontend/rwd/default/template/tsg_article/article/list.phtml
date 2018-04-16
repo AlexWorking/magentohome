@@ -1,0 +1,15 @@
+<?php /* @var $this Tsg_Article_Block_Article_List */ ?>
+
+<div>
+    <?php /* @var $article Tsg_Article_Model_Article */ ?>
+    <?php foreach ($this->getArticleCollection() as $article): ?>
+        <div class="article">
+            <h2>
+                <a href="<?php echo $this->getUrl('*/*/view', array('id' => $article->getId())) ?>"
+                   title="<?php echo $this->escapeHtml($article->getTitle()) ?>">
+                    <?php echo $this->escapeHtml($article->getTitle()) ?>
+                </a>
+            </h2>
+        </div>
+    <?php endforeach; ?>
+</div>

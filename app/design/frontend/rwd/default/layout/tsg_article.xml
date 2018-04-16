@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <tsg_article_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block type="core/template" name="copyright"
+                   template="tsg_article/article/copyright.phtml"
+                   after="article_list"
+            />
+
+            <block type="tsg_article/article_list"
+                   name="article_list"
+                   template="tsg_article/article/list.phtml"
+            />
+
+            <block type="core/text"
+                   name="header_article"
+                   before="-"
+                >
+
+                <action method="setText"><text><![CDATA[<h1>Article List</h1>]]></text></action>
+            </block>
+        </reference>
+        <remove name="header_article"></remove>
+
+    </tsg_article_index_index>
+    <tsg_article_index_view>
+        <reference name="content">
+            <block type="tsg_article/article"
+                   name="article_view"
+                   template="tsg_article/article.phtml"
+            />
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </tsg_article_index_view>
+
+    <cms_index_index>
+        <reference name="content">
+            <block type="tsg_article/article_list"
+                   name="article_list"
+                   template="tsg_article/article/list.phtml"
+            ></block>
+        </reference>
+    </cms_index_index>
+</layout>
